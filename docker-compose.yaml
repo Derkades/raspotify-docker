@@ -7,3 +7,4 @@ services:
     devices: ['/dev/snd:/dev/snd']
     environment:
       SPOTIFY_NAME: 'Raspberry Pi'
+      INITIAL_VOLUME: '40'

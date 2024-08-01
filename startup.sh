@@ -25,6 +25,10 @@ if [ "$DEVICE_NAME" != "" ]; then
   DEVICE="--device $DEVICE_NAME"
 fi
 
+if [ "$INITIAL_VOLUME" != "" ]; then
+  VOLUME="--initial-volume $INITIAL_VOLUME"
+fi
+
 if [ "$DEVICE_NAME" == "equal" ]; then
   if [ "$ALSA_SLAVE_PCM" == "" ]; then
     echo "ALSA_SLAVE_PCM must be defined. eg. use 'plughw:0,0' for device at card 0, sub 0"
@@ -58,5 +62,5 @@ fi
 set -e
 
 echo "Starting Raspotify..."
-/usr/bin/librespot $VERB --name "$SPOTIFY_NAME" $BACKEND $DEVICE --bitrate 320 --disable-audio-cache --enable-volume-normalisation
+/usr/bin/librespot $VERB --name "$SPOTIFY_NAME" $BACKEND $DEVICE $VOLUME --bitrate 320 --disable-audio-cache --enable-volume-normalisation
 
